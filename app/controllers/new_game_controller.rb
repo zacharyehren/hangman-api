@@ -10,5 +10,4 @@ class NewGameController < ApplicationController
     render json: {word: challenge_word}
   end
 
-
 end
