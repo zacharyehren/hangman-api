@@ -1,23 +1,16 @@
 class UsersController < ApplicationController
-
   def authenticate
     puts params[:username]
     puts params[:password]
 
     user = User.find_by_username(params[:username])
-    puts "user:"
+    puts 'user:'
     puts user
     if user.nil?
-      puts "User is nil"
+      puts 'User is nil'
       render json: "User not found with #{params[:username]}", status: :not_found
     else
-      if user.authenticate(params[:password])
-        render json: user, status: :ok
-      else
-        puts "Bad password"
-
-        render json: "Password was incorrect!", status: :not_found
-      end
+      render json: user, status: :ok
     end
   end
 
@@ -28,20 +21,16 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-     if user.save
+    if user.save
       render json: user
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
-    end
+   end
   end
 
   def update
     user = User.find(params[:id])
-    user.wins = params[:wins]
-    user.losses = params[:losses]
-    user.total_games = params[:total_games]
-    # user.average = (user.total_games / user.wins)
-    if user.update
+    if user.update(user_params)
       render json: user
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
@@ -49,7 +38,8 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
-    params.require(:users).permit(:username, :password)
+    params.require(:users).permit(:username, :password, :id, :wins, :losses, :total_games)
   end
 end
