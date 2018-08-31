@@ -1,24 +1,27 @@
-# README
+# Captain Swiftknife's Plank API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hey all you swashbucklers! This is the back-end portion of Captain Swiftknife's Plank - the pirate-themed version of hangman. This API connects to LinkedIn's Word API endpoint to pull in the puzzle word and houses the user data.
 
-Things you may want to cover:
+*Used in conjunction with [hangman](https://github.com/zacharyehren/hangman) on the front-end.*
 
-* Ruby version
+### Configuration
 
-* System dependencies
+Install the project gems by running:
 
-* Configuration
+```
+$ bundle install
+```
 
-* Database creation
+Build project table:
 
-* Database initialization
+```
+$ rake db:migrate
+```
 
-* How to run the test suite
+### Run the Application
 
-* Services (job queues, cache servers, search engines, etc.)
+Run the rails server:
 
-* Deployment instructions
-
-* ...
+```
+$ rails s
+```
