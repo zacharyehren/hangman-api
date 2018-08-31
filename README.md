@@ -25,3 +25,5 @@ Run the rails server:
 ```
 $ rails s
 ```
+
+The server will start up. To stop the server, press `ctrl + c`.
